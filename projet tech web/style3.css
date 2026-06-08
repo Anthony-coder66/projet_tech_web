@@ -1,0 +1,372 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0a0000;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* =========================
+   ALERT MOVING BACKGROUND
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,0,0,0.08),
+      rgba(255,0,0,0.08) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  animation: alertMove 6s linear infinite;
+  z-index: -2;
+}
+
+@keyframes alertMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+
+/* =========================
+   LIGHT PULSE BACKGROUND
+========================= */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 30%, rgba(255,0,0,0.15), transparent 40%),
+    radial-gradient(circle at 75% 70%, rgba(255,0,0,0.10), transparent 50%);
+  animation: pulse 4s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(1.1); opacity: 1; }
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0,0,0,0.9);
+  border-bottom: 1px solid red;
+}
+
+.logo {
+  color: red;
+  font-weight: bold;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  text-align: center;
+  padding: 50px;
+}
+
+.hero h1 {
+  color: red;
+  font-size: 40px;
+  animation: glitch 1.2s infinite;
+}
+
+/* glitch effect */
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red; }
+  25% { text-shadow: -2px 0 white; }
+  50% { text-shadow: 2px 2px black; }
+  75% { text-shadow: -2px -2px red; }
+  100% { text-shadow: 2px 0 red; }
+}
+
+/* =========================
+   MOVING TEXT (UNDER TITLE)
+========================= */
+.hero p {
+  color: #f5f1f1;
+  font-size: 20px;
+  display: inline-block;
+  animation: floatWarn 3s ease-in-out infinite,
+             glowWarn 2s ease-in-out infinite;
+}
+
+@keyframes floatWarn {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes glowWarn {
+  0% { text-shadow: 0 0 5px rgba(255,0,0,0.3); }
+  50% { text-shadow: 0 0 15px rgba(255,0,0,0.9); }
+  100% { text-shadow: 0 0 5px rgba(255,0,0,0.3); }
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: rgba(255,0,0,0.05);
+  border: 1px solid red;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px red;
+}
+
+.card h2 {
+  color: red;
+}
+
+/* =========================
+   WANNACRY SECTION
+========================= */
+.wannacry-section {
+  padding: 20px 40px 120px;
+}
+
+.wannacry-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(20,0,0,0.95), rgba(60,0,0,0.72));
+  border: 1px solid rgba(255,0,0,0.9);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 0 30px rgba(255,0,0,0.35), inset 0 0 30px rgba(255,0,0,0.12);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+}
+
+.wannacry-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wannacry-card:hover {
+  box-shadow: 0 0 40px rgba(255,0,0,0.6), inset 0 0 25px rgba(255,0,0,0.16);
+}
+
+.wannacry-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 2px,
+      transparent 6px
+    );
+  pointer-events: none;
+}
+
+.wannacry-card::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(circle, rgba(255,0,0,0.16), transparent 55%);
+  animation: alertGlow 5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes alertGlow {
+  from { transform: scale(1); opacity: 0.55; }
+  to { transform: scale(1.15); opacity: 1; }
+}
+
+.wannacry-badge {
+  display: inline-block;
+  color: #ffb3b3;
+  border: 1px solid rgba(255,0,0,0.8);
+  background: rgba(255,0,0,0.08);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  box-shadow: 0 0 12px rgba(255,0,0,0.35);
+}
+
+.wannacry-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.wannacry-icon {
+  font-size: 48px;
+  filter: drop-shadow(0 0 10px rgba(255,0,0,0.8));
+  animation: iconPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.wannacry-header h2 {
+  margin: 0;
+  color: #ff4d4d;
+  font-size: 34px;
+  animation: glitch 1.2s infinite;
+}
+
+.wannacry-date {
+  display: inline-block;
+  margin-top: 6px;
+  color: #fff;
+  background: rgba(255,0,0,0.12);
+  border-left: 3px solid red;
+  padding: 6px 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  box-shadow: 0 0 16px rgba(255,0,0,0.2);
+}
+
+.wannacry-timeline {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0 22px;
+}
+
+.wannacry-timeline span {
+  height: 3px;
+  flex: 1;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(255,0,0,0.2), rgba(255,0,0,1), rgba(255,0,0,0.2));
+  box-shadow: 0 0 10px rgba(255,0,0,0.55);
+  animation: timelinePulse 2s ease-in-out infinite;
+}
+
+@keyframes timelinePulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.wannacry-terminal {
+  font-family: "Courier New", monospace;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,0,0,0.4);
+  border-radius: 12px;
+  padding: 18px 18px 10px;
+  box-shadow: inset 0 0 20px rgba(255,0,0,0.08);
+}
+
+.wannacry-terminal p {
+  margin: 0 0 12px;
+  line-height: 1.7;
+  color: #f7eaea;
+  text-shadow: 0 0 4px rgba(255,0,0,0.25);
+}
+
+.prompt {
+  color: #ff4d4d;
+  margin-right: 8px;
+}
+
+/* =========================
+   NAV BUTTONS
+========================= */
+.nav-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.prev, .next {
+  border: 1px solid red;
+  color: red;
+  background: rgba(255,0,0,0.1);
+}
+
+.btn:hover {
+  background: red;
+  color: black;
+  box-shadow: 0 0 15px red;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:800px){
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wannacry-section {
+    padding: 20px 16px 120px;
+  }
+
+  .wannacry-header h2 {
+    font-size: 26px;
+  }
+
+  .wannacry-icon {
+    font-size: 40px;
+  }
+  .wannacry-image img {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 12px;
+  border: 1px solid red;
+  box-shadow: 0 0 20px rgba(255,0,0,0.4);
+  display: block;
+  margin: 20px auto;
+}
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #888;
+  margin-top: 20px;
+}

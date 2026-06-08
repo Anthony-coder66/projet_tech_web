@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Cybersécurité</title>
+  <link rel="stylesheet" href="style5.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="bg-particles" id="bgParticles"></div>
+  <div class="bg-glow"></div>
+
+  <main class="app-shell">
+    <header class="hero">
+      <div class="badge">Système de formation</div>
+      <h1>Quiz Cybersécurité</h1>
+      <p>Testez vos réflexes face aux menaces numériques avec un quiz immersif, dynamique et aléatoire.</p>
+      <div class="hero-stats">
+        <div class="stat"><span id="questionCount">10</span><small>questions</small></div>
+        <div class="stat"><span id="scoreLive">0</span><small>score</small></div>
+        <div class="stat"><span id="progressLive">0%</span><small>progression</small></div>
+      </div>
+    </header>
+
+    <section class="quiz-card" id="quizCard">
+      <div class="topbar">
+        <div class="step" id="stepText">Question 1 / 10</div>
+
+        <div class="timer-wrap">
+          <div class="timer-label">Temps restant</div>
+          <div class="timer" id="timerText">15s</div>
+        </div>
+
+        <div class="progress-wrap" aria-label="Progression du quiz">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <div class="question-panel">
+        <div class="question-tag">Question</div>
+        <h2 id="questionText">Chargement…</h2>
+      </div>
+
+      <div class="options" id="optionsContainer"></div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="control-row">
+        <button class="secondary-btn" id="restartBtn" type="button">↻ Recommencer</button>
+      </div>
+    </section>
+
+    <section class="result-card hidden" id="resultCard">
+      <div class="result-ring">
+        <div class="result-score" id="finalScore">0</div>
+        <div class="result-percent" id="finalPercent">0%</div>
+      </div>
+      <h2 id="resultTitle">Résultat</h2>
+      <p id="resultMessage"></p>
+      <button class="primary-btn" id="playAgainBtn" type="button">↻ Recommencer le quiz</button>
+    </section>
+  </main>
+
+  <a class="nav-btn nav-left" href="page4.html">⬅ Précédent</a>
+  <a class="nav-btn nav-right" href="index.html">🏠 Accueil</a>
+
+  <script src="js5.js"></script>
+</body>
+</html>

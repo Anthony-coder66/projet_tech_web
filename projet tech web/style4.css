@@ -1,0 +1,226 @@
+
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #041a10;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* =========================
+   ACCESS GRANTED BACKGROUND
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  /* green scan lines */
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,255,120,0.08),
+      rgba(0,255,120,0.08) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+
+  animation: scanMove 6s linear infinite;
+
+  z-index: -2;
+}
+
+/* soft green glow */
+body::after {
+  content: "ACCESS GRANTED  ACCESS GRANTED  ACCESS GRANTED";
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 40px;
+  font-weight: bold;
+  color: rgba(0,255,120,0.08);
+
+  letter-spacing: 5px;
+  white-space: nowrap;
+
+  animation: glowMove 4s ease-in-out infinite alternate;
+
+  z-index: -1;
+}
+
+/* animations */
+@keyframes scanMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+
+@keyframes glowMove {
+  from { opacity: 0.3; transform: scale(1); }
+  to { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(0,0,0,0.6);
+  border-bottom: 1px solid #00ff88;
+}
+
+.logo {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  text-align: center;
+  padding: 50px;
+}
+
+.hero h1 {
+  color: #00ff88;
+  font-size: 40px;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.hero p {
+  color: #bfffd9;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+/* =========================
+   CARD (GREEN SAFE MODE)
+========================= */
+.card {
+  background: rgba(0,255,120,0.05);
+  border: 1px solid #00ff88;
+  padding: 20px;
+  border-radius: 10px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.card h2 {
+  color: #00ff88;
+}
+.card {
+  background: rgba(255,0,0,0.05);
+  border: 1px solid rgba(5, 146, 24, 0.445);
+  padding: 20px;
+  border-radius: 10px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.card h2 {
+  color: #00ff88;
+}
+
+.nav-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 95%;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  transition: 0.3s;
+}
+
+/* left button */
+.prev {
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  background: rgba(255,0,0,0.1);
+}
+
+/* right button */
+.next {
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  background: rgba(255,0,0,0.1);
+}
+
+/* hover */
+.btn:hover {
+  background: #00ff88;
+  color: black;
+  box-shadow: 0 0 15px #00ff88;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:800px){
+  .grid {
+    grid-template-columns: 1fr;
+  }
+} 
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:800px){
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #888;
+  margin-top: 20px;
+}
